@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Matchanee - Matching PWA</title>
+    <meta name="theme-color" content="#161d31">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg">
+    <link rel="apple-touch-icon" href="/icon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="status" id="lbl_status">Siap.</div>
+        <h1 class="title">
+            <span>Matchanee</span>
+            <span id="lbl_keg" style="font-size:12px;color:var(--text-sub);font-weight:normal;">#36</span>
+        </h1>
+        <div style="display:flex; gap:8px; align-items:center;">
+            <button class="btn" id="btn_pwa" onclick="installPwa()" style="display:none;background:var(--mp-success);color:#fff;">📥 Pasang App</button>
+            <button class="btn" id="btn_theme" onclick="toggleTheme()" title="Ubah Tema" style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;padding:0;"></button>
+            <button class="btn" onclick="openLogin()">Ganti Akun</button>
+        </div>
+    </div>
+
+    <!-- Unified Table Scroll Area -->
+    <div class="table-wrapper" id="table_wrapper">
+        <div id="empty_state" style="display:none; width: 100%; height: 100%; align-items: center; justify-content: center;">
+            <div style="background:var(--bg-panel); border:1px solid var(--bg-border); border-radius:16px; padding:36px 48px; text-align:center; box-shadow:0 12px 30px rgba(0,0,0,0.2); max-width: 440px;">
+                <div style="font-size: 48px; margin-bottom: 12px;">🎉</div>
+                <div style="font-size: 20px; font-weight: 800; color: var(--mp-success); margin-bottom: 8px;">Kegiatan Selesai!</div>
+                <div id="empty_msg" style="font-size: 14px; color: var(--text-main); line-height: 1.4;">Semua data selesai dipadankan!</div>
+                <div style="font-size: 12px; color: var(--text-sub); margin-top: 10px;">Tidak ada data antrean tersisa.</div>
+            </div>
+        </div>
+        <table class="grid-table" id="grid_table">
+            <tbody id="grid_body"></tbody>
+        </table>
+    </div>
+
+    <!-- Bottom Action Bar (Locked & Visible) -->
+    <div class="bottom-bar">
+        <div class="bottom-actions">
+            <button class="btn-action btn-rec" id="btn_rec" onclick="matchRecommended()" style="display:none;">★ MATCH REKOMENDASI</button>
+            <button class="btn-action btn-unmatch" onclick="submitDecision('UNMATCH')">Unmatch [U]</button>
+            <button class="btn-action btn-skip" onclick="skipItem()">Skip [S]</button>
+            <button class="btn-action btn-ignore" onclick="submitDecision('IGNORE')">Ignore [I]</button>
+        </div>
+        <div class="footer-credit">
+            2026 Made with <span style="color:#ea5455;">♥</span>, Gilang Wahyu Prasetyo © BPS Kabupaten Tabalong
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="login_modal" style="display:none;">
+        <div class="login-card">
+            <h2>Masuk MatchaPro</h2>
+            <p>Matchanee - Matching PWA</p>
+            <div class="form-group">
+                <label>Pilih Akun / Username</label>
+                <input type="text" id="inp_user" list="accounts_list" placeholder="Ketik atau pilih akun..." autocomplete="off">
+                <datalist id="accounts_list"></datalist>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="inp_pass" autocomplete="current-password">
+            </div>
+            <div class="form-group">
+                <label>ID Kegiatan</label>
+                <input type="text" id="inp_keg" value="36">
+            </div>
+            <button class="btn-submit" id="btn_login_submit" onclick="doLogin()">Masuk Sekarang</button>
+            <div id="login_err" style="color:#ef4444;font-size:11px;margin-top:8px;text-align:center;"></div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>
