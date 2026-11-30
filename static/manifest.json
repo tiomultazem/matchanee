@@ -1,0 +1,18 @@
+{
+    "name": "Matchanee Tablet",
+    "short_name": "Matchanee",
+    "description": "Klien Cepat Matching BPS",
+    "start_url": "/",
+    "display": "standalone",
+    "orientation": "any",
+    "background_color": "#161d31",
+    "theme_color": "#7367f0",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "192x192 512x512",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ]
+}
