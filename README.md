@@ -27,7 +27,9 @@ Kamu harus klik 2x untuk setiap perlakuan SBR di MatchaPro, kan? Dengan ini, kam
    - **36**: Matching baru
    - **35**: Matching false
    - Atau masukkan angka yang tampil di URL setelah "kegiatan/" ketika kamu masuk ke menu matching. Lihat gambar berikut.
+
    ![Kode Matching](kodematching.png) 
+   
 6. Kamu bisa mencet shortcut huruf berikut untuk matching:
    - [Enter]: Match
    - [U]: Unmatch
