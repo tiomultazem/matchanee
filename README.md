@@ -30,12 +30,14 @@ Kamu harus klik 2x untuk setiap perlakuan SBR di MatchaPro, kan? Dengan ini, kam
 
    ![Kode Matching](kodematching.png) 
    
-6. Kamu bisa mencet shortcut huruf berikut untuk matching:
-   - [Enter]: Match
-   - [U]: Unmatch
-   - [I]: Ignore
-   - [S]: Skip
-   - [angka 1-9]: Match dengan SBR yang muncul sesuai nomornya.
+6. Kamu bisa mencet shortcut keyboard berikut untuk matching:
+   - <kbd>Enter</kbd> : Match rekomendasi
+   - <kbd>U</kbd> : Unmatch
+   - <kbd>I</kbd> : Ignore
+   - <kbd>S</kbd> : Skip
+   - <kbd>1</kbd> - <kbd>9</kbd> : Match dengan kandidat nomor 1-9 (hanya aktif jika opsi ≤ 10).
+   - <kbd>0</kbd> : Match dengan kandidat nomor 10 (hanya aktif jika opsi ≤ 10).
+   - *Catatan*: Jika opsi kandidat lebih dari 10 (>10), seluruh shortcut angka dinonaktifkan otomatis dan pemilihan kandidat wajib diklik manual.
 
 ---
 
