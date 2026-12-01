@@ -155,10 +155,11 @@ function renderGrid(to_match, candidates, rec_index, rec_score) {
                 badgeText = '[Kab Sama]'; badgeColor = '#94a3b8';
             }
 
+            const candNum = (candidates.length <= 10 && idx === 9) ? '0' : `${idx + 1}`;
             const candMap = {
                 "HEADER": `<div class="cand-header-box">
-                               <span style="font-weight:bold;color:${isRec?'#eab308':'#f8fafc'};">#${idx+1}${isRec?' ★ ('+rec_score+')':''}</span>
-                               <button class="btn-pick" onclick="pickCandidate(${idx}, '${c.idsbr}')">Pilih #${idx+1}</button>
+                               <span style="font-weight:bold;color:${isRec?'#eab308':'#f8fafc'};">#${candNum}${isRec?' ★ ('+rec_score+')':''}</span>
+                               <button class="btn-pick" onclick="pickCandidate(${idx}, '${c.idsbr}')">Pilih #${candNum}</button>
                            </div>`,
                 "NAMA": `<div class="cell-name ${isRec?'rec-name':''}">${escapeHTML(c.nama || '-')}</div>`,
                 "ALAMAT": `<div class="cell-addr">${escapeHTML(c_addr)}</div>`,
@@ -184,7 +185,8 @@ function renderGrid(to_match, candidates, rec_index, rec_score) {
     const btnRec = document.getElementById('btn_rec');
     if (rec_index !== null && candidates.length > 0) {
         btnRec.style.display = 'flex';
-        btnRec.innerText = `★ MATCH #${rec_index + 1} (${rec_score})`;
+        const recNum = (candidates.length <= 10 && rec_index === 9) ? '0' : (rec_index + 1);
+        btnRec.innerText = `★ MATCH #${recNum} (${rec_score})`;
     } else {
         btnRec.style.display = 'none';
     }
@@ -332,9 +334,13 @@ async function doLogin() {
 window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
     if (e.key === 'Enter') matchRecommended();
-    if (e.key >= '1' && e.key <= '9') {
-        const num = parseInt(e.key) - 1;
-        if (currentCandidates[num]) pickCandidate(num, currentCandidates[num].idsbr);
+    if (currentCandidates && currentCandidates.length <= 10) {
+        if (e.key >= '1' && e.key <= '9') {
+            const num = parseInt(e.key) - 1;
+            if (currentCandidates[num]) pickCandidate(num, currentCandidates[num].idsbr);
+        } else if (e.key === '0') {
+            if (currentCandidates[9]) pickCandidate(9, currentCandidates[9].idsbr);
+        }
     }
     if (e.key === 'u' || e.key === 'U') submitDecision('UNMATCH');
     if (e.key === 's' || e.key === 'S') skipItem();
